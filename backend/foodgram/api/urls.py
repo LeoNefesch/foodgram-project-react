@@ -6,15 +6,15 @@ from rest_framework import routers
 from .views import IngredientViewSet, RecipeViewSet, TagViewSet, UsersViewSet
 
 router = routers.DefaultRouter()
-router.register('users', UsersViewSet, basename='users')
-router.register(r'tags', TagViewSet, basename='tags')
-router.register(r'recipes', RecipeViewSet, basename='recipes')
-router.register(r'ingredients', IngredientViewSet, basename='ingredients')
+router.register("users", UsersViewSet, basename="users")
+router.register(r"tags", TagViewSet, basename="tags")
+router.register(r"recipes", RecipeViewSet, basename="recipes")
+router.register(r"ingredients", IngredientViewSet, basename="ingredients")
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path(r'^auth/', include('djoser.urls')),
-    path(r'^auth/', include('djoser.urls.authtoken')),
+    path("", include(router.urls)),
+    path(r"^auth/", include("djoser.urls")),
+    path(r"^auth/", include("djoser.urls.authtoken")),
 ]
 
 if settings.DEBUG:
