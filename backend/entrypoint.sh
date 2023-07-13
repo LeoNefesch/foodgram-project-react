@@ -1,2 +1,2 @@
 #!/bin/bash
-exec gunicorn --bind 0:8000 foodgram.wsgi:application"
+exec gunicorn --bind 0.0.0.0:$PORT_NGINX foodgram.wsgi:application

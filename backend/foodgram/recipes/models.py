@@ -1,6 +1,7 @@
 from django.core.validators import MinValueValidator, RegexValidator
 from django.db import models
 from django.db.models.constraints import UniqueConstraint
+
 from users.models import User
 
 
@@ -86,7 +87,7 @@ class Recipe(models.Model):
     tags = models.ManyToManyField(
         Tag,
         verbose_name="Теги",
-        help_text="Выберите тэг"
+        help_text="Выберите тэг",
     )
     pub_date = models.DateTimeField(
         auto_now_add=True,

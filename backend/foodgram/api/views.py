@@ -2,33 +2,22 @@ from django.db.models import Sum
 from django.http import HttpResponse
 from django_filters.rest_framework import DjangoFilterBackend
 from djoser.views import UserViewSet
-from recipes.models import (
-    Favorite,
-    Ingredient,
-    Recipe,
-    RecipeIngredient,
-    ShoppingCart,
-    Tag
-)
 from rest_framework import filters, permissions, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-from users.models import Subscription, User
 
-from .filters import IngredientSearchFilter, RecipeFilter
-from .paginators import SixPerPagePagination
-from .permissions import AdminOrAuthor, AdminOrReadOnly
-from .serializers import (
-    IngredientSerializer,
-    RecipeCreateSerializer,
-    RecipeForFollowersSerializer,
-    RecipeSerializer,
-    SubscriptionSerializer,
-    TagSerializer,
-    UsersSerializer
-)
+from api.filters import IngredientSearchFilter, RecipeFilter
+from api.paginators import NumberPerPagePagination
+from api.permissions import AdminOrAuthor, AdminOrReadOnly
+from api.serializers import (IngredientSerializer, RecipeCreateSerializer,
+                             RecipeForFollowersSerializer, RecipeSerializer,
+                             SubscriptionSerializer, TagSerializer,
+                             UsersSerializer)
+from recipes.models import (Favorite, Ingredient, Recipe, RecipeIngredient,
+                            ShoppingCart, Tag)
+from users.models import Subscription, User
 
 
 class UsersViewSet(UserViewSet):
@@ -36,7 +25,7 @@ class UsersViewSet(UserViewSet):
 
     queryset = User.objects.all()
     serializer_class = UsersSerializer
-    pagination_class = SixPerPagePagination
+    pagination_class = NumberPerPagePagination
     filter_backends = (
         DjangoFilterBackend,
         filters.SearchFilter,
@@ -113,7 +102,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
     queryset = Recipe.objects.all()
     permission_classes = (AdminOrAuthor,)
-    pagination_class = SixPerPagePagination
+    pagination_class = NumberPerPagePagination
     filter_backends = (DjangoFilterBackend,)
     filterset_class = RecipeFilter
 

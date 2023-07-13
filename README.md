@@ -11,9 +11,9 @@
  **Стэк технологий:**
  - IDE VSCode;
  - терминал Linux;
- - Python;
- - Django;
- - djangorestframework;
+ - Python 3.9.5;
+ - Django 3.2.3;
+ - djangorestframework 3.12.4;
  - djoser;
  - Pillow;
  - gunicorn;
@@ -48,8 +48,8 @@ nano .env
 POSTGRES_USER=<пользователь_БД>
 POSTGRES_PASSWORD=<пароль_пользователя_БД>
 POSTGRES_DB=<имя_БД>
-DB_HOST: db
-DB_PORT: 5432
+DB_HOST=db
+DB_PORT=5432
 SECRET_KEY=<django-insecure-сгенерированный_на_https://djecrety.ir/_ключ_для_джанго>
 ALLOWED_HOSTS=<список_используемых_доменных_имён_и_IP_адресов>
 PORT_NGINX=<порт_на_который_пойдут_все_запросы_в_Docker>
