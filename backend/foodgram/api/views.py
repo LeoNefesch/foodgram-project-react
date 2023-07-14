@@ -182,5 +182,4 @@ class RecipeViewSet(viewsets.ModelViewSet):
         shopping_cart = "Список покупок:\n"
         for name, measure, amount in data:
             shopping_cart += f"{name.capitalize()} {amount} {measure},\n"
-        response = HttpResponse(shopping_cart, content_type="text/plain")
-        return response
+        return HttpResponse(shopping_cart, content_type="text/plain")

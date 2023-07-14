@@ -4,6 +4,8 @@ from django.db.models.constraints import UniqueConstraint
 
 from users.models import User
 
+MIN_VALUE = 1
+
 
 class Tag(models.Model):
     name = models.CharField(
@@ -96,7 +98,7 @@ class Recipe(models.Model):
         help_text="Дата публикации",
     )
     cooking_time = models.IntegerField(
-        validators=[MinValueValidator(1, message="Минимум 1")],
+        validators=[MinValueValidator(MIN_VALUE, message="Минимум 1")],
         verbose_name="Время приготовления (в минутах)",
         help_text="Укажите время приготовления в минутах",
     )
@@ -124,7 +126,7 @@ class RecipeIngredient(models.Model):
         help_text="Укажите ингредиенты",
     )
     amount = models.IntegerField(
-        validators=[MinValueValidator(1, "Минимум 1 ингредиент")],
+        validators=[MinValueValidator(MIN_VALUE, "Минимум 1 ингредиент")],
         verbose_name="Количество ингредиентов",
         help_text="Укажите количество ингредиента",
     )
