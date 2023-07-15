@@ -238,8 +238,8 @@ class RecipeSubscriptionUserField(serializers.Field):
 
     def to_representation(self, recipes_list):
         recipes_data = [0] * len(recipes_list)
-        for i, recipes in enumerate(recipes_list):
-            recipes_data[i] = {
+        for indx, recipes in enumerate(recipes_list):
+            recipes_data[indx] = {
                 "id": recipes.id,
                 "name": recipes.name,
                 "image": recipes.image.url,
