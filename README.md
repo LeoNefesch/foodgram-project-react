@@ -21,6 +21,7 @@
  - Docker;
  - GitHub Actions;
  - PostgreSQL
+ - React
 
 **Польза проекта**
 - наглядный пример контейнеризации;
