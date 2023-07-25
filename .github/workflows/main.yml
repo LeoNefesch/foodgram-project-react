@@ -57,7 +57,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            cd infra
             sudo docker compose pull
             sudo docker compose down
             sudo touch .env
