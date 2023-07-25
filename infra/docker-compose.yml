@@ -14,9 +14,7 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data/
   backend:
-    build:
-      context: ../backend
-      dockerfile: Dockerfile
+    image: leonefesch/foodgram_backend
     env_file: ../.env
     depends_on:
       - db
@@ -25,9 +23,7 @@ services:
       - static:/static
       - media:/app/media
   frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+    image: leonefesch/foodgram_frontend
     restart: no
     volumes:
       - ../frontend/:/app/result_build/
