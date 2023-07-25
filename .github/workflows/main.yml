@@ -57,10 +57,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull leonefesch/foodgram_backend:latest
-            sudo docker pull leonefesch/foodgram_frontend:latest
-            sudo docker compose stop
-            sudo docker compose rm backend
+            cd infra
+            sudo docker compose pull
+            sudo docker compose down
             sudo touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo DB_NAME=${{ secrets.DB_NAME }} >> .env
@@ -71,6 +70,8 @@ jobs:
             sudo docker compose up -d
             sudo docker compose exec -T backend python manage.py migrate
             sudo docker compose exec -T backend python manage.py collectstatic --no-input
+            sudo docker compose exec -T backend python manage.py load_tags
+            sudo docker compose exec -T backend python manage.py load_ingredients
 
   send_message:
     name: Send message to Telegram
